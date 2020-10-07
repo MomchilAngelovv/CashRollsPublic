@@ -1,0 +1,25 @@
+﻿@model CashRolls.Web.Models.ViewModels.UsersAllViewModel
+@{
+    var row = 1;
+}
+
+<h1 class="text-center text-white display-3">Registered users:</h1>
+<table class="table table-sm table-dark">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Id</th>
+            <th scope="col">Email</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model.Users)
+        {
+            <tr>
+                <th scope="row">@(row++)</th>
+                <td>@user.Id</td>
+                <td>@user.Email</td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,27 @@
+﻿@model CashRolls.Web.Models.InputModels.RollsCreateInputModel
+
+<h1 class="text-center text-white display-3">Create roll</h1>
+<form asp-controller="Rolls" asp-action="Create" method="post" enctype="application/x-www-form-urlencoded">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div class="form-row">
+        <div class="form-group col-md-3">
+            <label asp-for="CurrencyId" class="text-white">Currency</label>
+            <vc:currencies-select-list-items></vc:currencies-select-list-items>
+        </div>
+        <div class="form-group col-md-3">
+            <label asp-for="EntryPrice" class="text-white">Entry price</label>
+            <input asp-for="EntryPrice" class="form-control">
+        </div>
+        <div class="form-group col-md-3">
+            <label asp-for="EntryPriceTaxPercent" class="text-white">Tax percent</label>
+            <input asp-for="EntryPriceTaxPercent" class="form-control">
+        </div>
+        <div class="form-group col-md-3">
+            <label asp-for="MaxSum" class="text-white">Max sum</label>
+            <input asp-for="MaxSum" class="form-control">
+        </div>
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary col-12">Create</button>
+    </div>
+</form>

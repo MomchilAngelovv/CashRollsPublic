@@ -1,0 +1,35 @@
+﻿@model CashRolls.Web.Models.ViewModels.RollsStatisticsViewModel
+
+<h1 class="text-center">History</h1>
+<hr />
+<table class="table table-sm table-hover table-dark">
+    <thead>
+        <tr>
+            <th>Active</th>
+            <th>Currency</th>
+            <th>Entry price</th>
+            <th>P. percent</th>
+            <th>Max sum</th>
+            <th>Total</th>
+            <th>Reward</th>
+            <th>Profit</th>
+            <th>Winner</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var roll in Model.Rolls)
+        {
+            <tr>
+                <td>@roll.IsActive</td>
+                <td>@roll.Currency</td>
+                <td>@roll.Tuition</td>
+                <td>@roll.EntryPriceTaxPercent</td>
+                <td>@roll.MaxSum</td>
+                <td>@roll.Total</td>
+                <td>@roll.Reward</td>
+                <td>@roll.Profit</td>
+                <td>@roll.Winner</td>
+            </tr>
+        }
+    </tbody>
+</table>

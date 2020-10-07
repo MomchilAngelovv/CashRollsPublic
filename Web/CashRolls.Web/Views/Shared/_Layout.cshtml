@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cashrolls</title>
+    <partial name="_StylesPartial" />
+</head>
+<body>
+    <div id="loading" class="justify-content-center">
+        <img id="loading-image" src="~/images/loading.gif" alt="Loading..." />
+    </div>
+    <partial name="_HeaderPartial" />
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+    <partial name="_FooterPartial" />
+    <partial name="_ScriptsPartial" />
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

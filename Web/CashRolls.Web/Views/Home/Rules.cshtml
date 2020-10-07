@@ -1,0 +1,55 @@
+﻿<h1 class="text-center text-white display-3">Rules</h1>
+<div class="alert alert-success" role="alert">
+    CashRolls is very eazy platoform to understand and very eazy to use. It is the most intuative way to earn money. People will pay fixed ammount to enter a roll and after that one lucky random person from the roll will get reward (the sum of all of participants money). You need to follow three basic steps in order to join roll.
+</div>
+<div class="alert alert-danger" role="alert">
+    WARNING! All communication will be held in English so make sure to understand English well before take part in cash rolls.
+</div>
+<div class="alert alert-warning" role="alert">
+    CashRolls winners will receive their money in 7-14 days after the roll has closed.
+</div>
+<div id="accordion">
+    <div class="card">
+        <div class="card-header" id="headingOne">
+            <h5 class="mb-0">
+                <button class="btn btn-light col-12 collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    1. Create an account
+                </button>
+            </h5>   
+        </div>
+
+        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+            <div class="card-body">
+                Go to <a asp-controller="Users" asp-action="Register">Register</a> page. Fill up the form and create an account. Please make sure to provide valid phone number and email (you will be contacted if you win cash roll to ensure everything is correct). So eazy! 
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header" id="headingTwo">
+            <h5 class="mb-0">   
+                <button class="btn btn-light col-12 collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    2. Join roll
+                </button>
+            </h5>
+        </div>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+            <div class="card-body">
+                Go to <a asp-controller="Home" asp-action="Dashboard">Dashborad</a> page. Check if there is an active roll. You will see the entry fee and the number of participants who joined the roll. Click the 'Join roll' button, enter your credit card details and that's it. On the <a asp-controller="Home" asp-action="Dashboard">Dashborad</a> page, you will also see cut percent which will cover all transaction fees and card payment taxes. Example: If entry fee is 50$ and cut percent is 10%, participants will attend with 45$ and 5$ will be cut to cover transacion taxes.
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header" id="headingThree">
+            <h5 class="mb-0">
+                <button class="btn btn-light col-12 collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    3. Win roll
+                </button>
+            </h5>
+        </div>
+        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+            <div class="card-body">
+                When enough participants get into roll, the platoform will make random roll from all participants and one lucky person will get the reward. After that you will be called by CashRolls representative and will be asked to dictate your Id to prove you are the real owner. Id can be found on your <a asp-controller="Users" asp-action="Profile">profile</a> page. Always keep your Id safe and never share it with others. Email might also be needed for verification so make sure to provide valid Email and Phone number (phone number should be in valid format).
+            </div>
+        </div>
+    </div>
+</div>

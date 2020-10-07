@@ -1,0 +1,40 @@
+﻿@model CashRolls.Web.Models.ViewModels.UsersProfileViewModel
+
+<h1 class="text-center text-white display-3">Profile</h1>
+<form>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label asp-for="User.Email" class="text-white"></label>
+            <input asp-for="User.Email" class="form-control" readonly>
+        </div>
+        <div class="form-group col-md-6">
+            <label asp-for="User.PhoneNumber" class="text-white"></label>
+            <input asp-for="User.PhoneNumber" class="form-control" readonly>
+        </div>
+
+    </div>
+    <div class="form-row">
+        <div class="form-group col-12">
+            <label asp-for="User.Id" class="text-white"></label>
+            <input asp-for="User.Id" class="form-control" readonly>
+        </div>
+    </div>
+</form>
+
+@if (Model.User.IsAdministrator)
+{
+    if (Model.HasActiveRoll == false)
+    {
+        <a asp-controller="Rolls" asp-action="Create" class="btn btn-success">Create Roll</a>
+    }
+    <a asp-controller="Rolls" asp-action="Statistics" class="btn btn-info">Statistics</a>
+    <a asp-controller="Users" asp-action="All" class="btn btn-warning">Users</a>
+
+    <h1 class="text-center text-white display-3">Last contact messages</h1>
+    <ul class="list-group">
+        @foreach (var contactMessage in Model.ContactMessages)
+        {
+            <li class="list-group-item disabled">[@contactMessage.CreatedOn] @contactMessage.Sender => @contactMessage.Message</li>
+        }
+    </ul>
+}

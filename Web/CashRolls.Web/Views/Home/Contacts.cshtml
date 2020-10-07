@@ -1,0 +1,49 @@
+﻿@model CashRolls.Web.Models.InputModels.HomeContactsInputModel
+
+<div class="alert alert-success" role="alert">
+    <h4 class="alert-heading">If you dont want to follow football games or guess numbers - you are at the right place!</h4>
+    <p>CashRolls is an open-source (<a href="#">GitHub</a>) intuative platoform which is designed for people who dont have any experience or time to follow events. Basically it provides a poll of people who participate with fix ammount of money and at the end one random particpant will get all the money.</p>
+    <p>Example: If 10 people participate with 9 euro you will have 1/10 (10%) to win all the 90 Euro. Eazy enough?</p>
+    <hr>
+    <p class="mb-0">Only thing that you need is LUCK. Good luck!</p>
+</div>
+
+<h1 class="text-center text-white display-3">Contact me</h1>
+<form asp-controller="Home" asp-action="Contacts" method="post" enctype="application/x-www-form-urlencoded">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div class="form-group">
+        <label asp-for="Sender" class="text-white"></label>
+        <input asp-for="Sender" type="text" class="form-control" />
+        <span asp-validation-for="Sender" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Message" class="text-white"></label>
+        <textarea asp-for="Message" class="form-control"></textarea>
+        <span asp-validation-for="Message" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary col-12">Send message</button>
+</form>
+<hr />
+<div class="row justify-content-center">
+    <div>
+        <div class="card" style="width: 25rem;">
+            <img class="card-img-top" src="~/images/MomchilAngelov.jpg" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">Momchil Angelov</h5>
+                <p class="card-text">
+                    Scaptopara street, 13<br>
+                    Blagoevgrad 2700, Bulgaria<br>
+                    Phone: 00359883351115
+                </p>
+                <a href="https://github.com/MomchilAngelovv" class="btn btn-info" target="_blank">GitHub</a>
+                <a href="https://www.linkedin.com/in/momchil-angelov-79744416b/" class="btn btn-info" target="_blank">LinkedIn</a>
+                <a href="https://www.facebook.com/momchil.angelov.9" class="btn btn-info" target="_blank">Facebook</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    <partial name="_ValidationScriptsPartial" />
+}

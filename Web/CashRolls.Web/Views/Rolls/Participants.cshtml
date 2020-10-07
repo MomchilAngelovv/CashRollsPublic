@@ -1,0 +1,48 @@
+﻿@model CashRolls.Web.Models.ViewModels.RollsParticipantsViewModel
+
+<h1 class="text-center text-white display-3">Participants</h1>
+<table class="table table-dark">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Email</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var participant in Model.Participants)
+        {
+
+            <tr>
+                <th scope="row">1</th>
+                <td>@participant.Email</td>
+            </tr>
+        }
+    </tbody>
+</table>
+<nav aria-label="...">
+    <ul class="pagination justify-content-center">
+        @if (Model.CurrentPage > 1)
+        {
+            <li class="page-item">
+               <a asp-route="participants" asp-route-id="@Model.RollId" asp-route-page="@(Model.CurrentPage-1)" class="page-link">Previous</a>
+            </li>
+            <li class="page-item"><a asp-route="participants" asp-route-id="@Model.RollId" asp-route-page="@(Model.CurrentPage-1)" class="page-link">@(Model.CurrentPage-1)</a></li>
+        }
+        else
+        {
+            <li class="page-item disabled">
+                <span class="page-link">Previous</span>
+            </li>
+        }
+        <li class="page-item active">
+            <span class="page-link">
+                @Model.CurrentPage
+                <span class="sr-only">(current)</span>
+            </span>
+        </li>
+        <li class="page-item"><a asp-route="participants" asp-route-id="@Model.RollId" asp-route-page="@(Model.CurrentPage+1)" class="page-link">@(Model.CurrentPage+1)</a></li>
+        <li class="page-item">
+            <a asp-route="participants" asp-route-id="@Model.RollId" asp-route-page="@(Model.CurrentPage+1)" class="page-link">Next</a>
+        </li>
+    </ul>
+</nav>

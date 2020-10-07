@@ -1,0 +1,36 @@
+﻿@model CashRolls.Web.Models.InputModels.UsersRegisterInputModel
+
+<h1 class="text-center text-white display-3">Register</h1>
+@if (this.TempData[ErrorMessages.UserAlreadyExists] != null)
+{
+    <div class="alert alert-danger" role="alert">@this.TempData[ErrorMessages.UserAlreadyExists]</div>
+}
+<form asp-controller="Users" asp-action="Register" method="post" enctype="application/x-www-form-urlencoded">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div class="form-group">
+        <label asp-for="Email" class="text-white"></label>
+        <input asp-for="Email" class="form-control" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="PhoneNumber" class="text-white"></label>
+        <input asp-for="PhoneNumber" class="form-control" />
+        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Password" class="text-white"></label>
+        <input asp-for="Password" type="password" class="form-control" />
+        <span asp-validation-for="Password" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="ConfirmPassword" class="text-white"></label>
+        <input asp-for="ConfirmPassword" type="password" class="form-control" />
+        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary col-12">Register</button>
+</form>
+
+@section Scripts
+{
+    <partial name="_ValidationScriptsPartial" />
+}

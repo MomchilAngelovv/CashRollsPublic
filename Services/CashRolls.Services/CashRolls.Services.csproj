@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="10.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Data\CashRolls.Data.Models\CashRolls.Data.Models.csproj" />
+    <ProjectReference Include="..\..\Data\CashRolls.Data\CashRolls.Data.csproj" />
+    <ProjectReference Include="..\CashRolls.Services.Models\CashRolls.Services.Models.csproj" />
+  </ItemGroup>
+
+</Project>

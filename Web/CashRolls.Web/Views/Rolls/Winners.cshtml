@@ -1,0 +1,20 @@
+﻿@model CashRolls.Web.Models.ViewModels.RollsHistoryViewModel
+
+<h1 class="text-center text-white display-3">Winners</h1>
+<ul class="list-group">
+    @foreach (var roll in Model.Rolls)
+    {
+        if (roll.Winner == null && this.User.IsInRole(Roles.Administrator))
+        {
+            <li class="list-group-item list-group-item-warning">[Created: @roll.CreatedOn] [Currency: @roll.CurrencyName] [Entry fee: @roll.EntryFee@roll.CurrencySymbol] [Participants: @roll.ParticipantsCount] [Winner: waiting for winner] [Reward: @roll.Reward@roll.CurrencySymbol] <a asp-controller="Rolls" asp-action="RollWinner" asp-route-id="@roll.Id" class="btn btn-sm btn-primary float-right">Roll winner</a></li>
+        }
+        else if (roll.Winner != null)
+        {
+            <li class="list-group-item list-group-item-success">[Created: @roll.CreatedOn] [Currency: @roll.CurrencyName] [Entry fee: @roll.EntryFee@roll.CurrencySymbol] [Participants: @roll.ParticipantsCount] [Winner: @roll.Winner] [Reward: @roll.Reward@roll.CurrencySymbol]</li>
+        }
+        else
+        {
+            <li class="list-group-item list-group-item-warning">[Created: @roll.CreatedOn] [Currency: @roll.CurrencyName] [Entry fee: @roll.EntryFee@roll.CurrencySymbol] [Participants: @roll.ParticipantsCount] [Winner: waiting for winner] [Reward: @roll.Reward@roll.CurrencySymbol]</li>
+        }
+    }
+</ul>

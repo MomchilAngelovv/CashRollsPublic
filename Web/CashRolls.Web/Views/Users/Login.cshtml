@@ -1,0 +1,36 @@
+﻿@model CashRolls.Web.Models.InputModels.UsersLoginInputModel
+
+<h1 class="text-center text-white display-3">Log in</h1>
+@if (this.TempData[ErrorMessages.InvalidLoginCredentials] != null)
+{
+    <div class="alert alert-danger" role="alert">@this.TempData[ErrorMessages.InvalidLoginCredentials]</div>
+}
+<form asp-controller="Users" asp-action="Login" method="post" enctype="application/x-www-form-urlencoded">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div class="form-group">
+        <label asp-for="Email" class="text-white"></label>
+        <input asp-for="Email" class="form-control" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Password" class="text-white"></label>
+        <input asp-for="Password" type="password" class="form-control" />
+        <span asp-validation-for="Password" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <div class="checkbox">
+            <label asp-for="RememberMe" class="text-white">
+                <input asp-for="RememberMe" /> Remember me?
+            </label>
+        </div>
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-success col-12">Log in</button>
+    </div>
+</form>
+<a asp-controller="Users" asp-action="Register" class="btn btn-primary col-12">You dont have an account? Click here to regsister</a>
+
+@section Scripts
+{
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,78 @@
+﻿@model CashRolls.Web.Models.ViewModels.HomeDashboardViewModel
+
+<h1 class="text-center text-white display-3">Dashboard</h1>
+@if (this.TempData[InfoMessages.MessageSentSuccessfully] != null)
+{
+<div class="alert alert-success text-center" role="alert">@this.TempData[InfoMessages.MessageSentSuccessfully]</div>
+}
+<div class="alert alert-warning text-center" role="alert">Before you continue please read the <a asp-controller="Home" asp-action="Rules">rules</a>!</div>
+<hr />
+<div class="card text-center">
+    @if (Model.ActiveRoll != null)
+    {
+        <div class="card-header">Active roll (@Model.ActiveRoll.CurrencyName) --- Entry fee: @Model.ActiveRoll.EntryPrice@Model.ActiveRoll.CurrencySymbol --- Cut percent: @Model.ActiveRoll.EntryPriceTaxPercent%</div>
+        <div class="card-body">
+            <h5 class="card-title">Participants: @Model.ActiveRoll.ParticipantsCount - <a asp-route="participants" asp-route-id="@Model.ActiveRoll.Id" asp-route-page="1" class="btn btn-warning btn-sm">View all</a></h5>
+            <p class="card-text display-2">Reward: @Model.ActiveRoll.Reward@Model.ActiveRoll.CurrencySymbol</p>
+            @if (Model.User != null && Model.User.IsLoggedIn)
+            {
+                if (Model.User.AlreadyJoined)
+                {
+                    <div class="alert alert-primary" role="alert">Already joined!</div>
+                }
+                else
+                {
+                    <button id="checkout-button" class="btn btn-success col-12">Join roll!</button>
+                }
+                @if (Model.User.IsAdministrator)
+                {
+                    <hr />
+                    <div class="alert alert-warning" role="alert">
+                        <button type="button" class="btn btn-danger col-12" data-toggle="modal" data-target="#closeRollModal">Close roll</button>
+                    </div>
+                }
+            }
+            else
+            {
+                <a asp-controller="Users" asp-action="Login" class="btn btn-warning">Login before you can join!</a>
+            }
+        </div>
+    }
+    else
+    {
+        <div class="display-4">Please wait to roll winner for last roll</div>
+    }
+    @if (Model.ActiveRoll != null)
+    {
+        <div class="card-footer text-muted">Roll created: @Model.ActiveRoll.CreatedOn --- Id: @Model.ActiveRoll.Id</div>
+    }
+    else
+    {
+        <div class="card-footer text-muted">Please wait for roll to be created.</div>
+    }
+</div>
+@if (Model.ActiveRoll != null)
+{
+    <div class="modal fade" id="closeRollModal" tabindex="-1" role="dialog" aria-labelledby="closeRollModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="closeRollModalLabel">Close roll</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">Are you sure you want to close this roll with Id: @Model.ActiveRoll.Id</div>
+                <div class="modal-footer">
+                    <a asp-controller="Rolls" asp-action="Close" class="btn btn-danger col-12">Close roll</a>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts
+{
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="~/js/home_dashboard.js"></script>
+}
